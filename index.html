@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>英傑大戦 士気計算</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<h1>英傑大戦<br>士気計算ツール</h1>
+
+
+<h2>デッキ情報</h2>
+
+
+<label>
+高揚コスト
+<input id="kouyou" type="number" value="0" step="0.5">
+</label>
+
+
+<label>
+現在カウント
+<input id="count" type="number" value="99">
+</label>
+
+
+<label>
+現在士気
+<input id="current" type="number" value="0" step="0.1">
+</label>
+
+
+
+<h2>追加士気</h2>
+
+
+<label>
+<input id="shiki2" type="checkbox">
+表・士気流派2（+1.5）
+</label>
+
+
+<label>
+<input id="kohou2" type="checkbox">
+表・琥煌流派2（+1）
+</label>
+
+
+<label>
+<input id="hougu" type="checkbox">
+宝具副効果（+0.75）
+</label>
+
+
+
+<h2>表・士気流派3</h2>
+
+<select id="shiki3">
+
+<option value="0">
+使用しない
+</option>
+
+<option value="90">
+残り90カウントで発動
+</option>
+
+<option value="80">
+残り80カウントで発動
+</option>
+
+<option value="70">
+残り70カウントで発動
+</option>
+
+<option value="60">
+残り60カウントで発動
+</option>
+
+<option value="50">
+残り50カウントで発動
+</option>
+
+<option value="40">
+残り40カウントで発動
+</option>
+
+<option value="30">
+残り30カウントで発動
+</option>
+
+<option value="20">
+残り20カウントで発動
+</option>
+
+<option value="10">
+残り10カウントで発動
+</option>
+
+</select>
+
+
+
+<br><br>
+
+
+<button onclick="calc()">
+計算
+</button>
+
+
+
+<h2>結果</h2>
+
+
+<div id="result">
+ここに表示
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

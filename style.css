@@ -1,0 +1,61 @@
+body {
+    background:#222;
+    color:white;
+    font-family:sans-serif;
+    text-align:center;
+    padding:20px;
+}
+
+input {
+    width:80px;
+    padding:8px;
+    font-size:16px;
+}
+
+label {
+    display:block;
+    margin:10px;
+}
+
+button {
+    font-size:20px;
+    padding:10px 30px;
+}
+
+
+#result div {
+
+    margin:15px;
+    padding:15px;
+    border-radius:10px;
+    font-size:22px;
+}
+
+
+.now {
+    background:#333;
+}
+
+
+.effective {
+
+    background:#665500;
+    color:#ffff99;
+
+}
+
+
+.total {
+
+    background:#004400;
+    color:#99ff99;
+
+}
+
+
+.dead {
+
+    background:#444;
+    color:#aaa;
+
+}
