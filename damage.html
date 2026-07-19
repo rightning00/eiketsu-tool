@@ -13,8 +13,21 @@
 
 </head>
 
-
 <body>
+
+<div class="menu">
+
+<button onclick="location.href='index.html'">
+士気計算
+</button>
+
+<button onclick="location.href='damage.html'">
+ダメージ計算
+</button>
+
+</div>
+
+<hr>
 
 <h1>
 英傑大戦<br>
@@ -22,24 +35,49 @@
 </h1>
 
 
-<h2>自武力</h2>
+<h2>設定</h2>
+
+<label>
+
+自武力
 
 <select id="myPower"></select>
 
+</label>
 
-<h2>射撃設定</h2>
 
 <label>
-射撃発数
 
-<select id="shotCount">
+攻撃種類
+
+<select id="attackType">
+
+    <option value="clash">乱戦</option>
+
+    <option value="spear">槍撃</option>
+
+    <option value="charge">騎馬</option>
+
+    <option value="bow">弓</option>
+
+    <option value="slash">剣豪</option>
+
+    <option value="shot">銃</option>
 
 </select>
 
 </label>
 
 
-<br>
+<h2>射撃設定</h2>
+
+<label>
+
+射撃発数
+
+<select id="shotCount"></select>
+
+</label>
 
 
 <label>
@@ -51,29 +89,26 @@
 </label>
 
 
-
 <h2>ダメージ表</h2>
 
+<div id="damageTable"></div>
 
-<div id="table">
+<hr>
 
-</div>
+<h2>任意武力</h2>
 
+<label>
 
-
-<h2>任意敵武力</h2>
+敵武力
 
 <select id="enemyPower"></select>
 
+</label>
 
-<div id="detail">
-
-</div>
-
+<div id="detail"></div>
 
 
 <script src="damage.js"></script>
-
 
 </body>
 
