@@ -223,94 +223,143 @@ function shotText(my, enemy){
 
 
 
-// 武力1～12一覧表示
+/// 武力1～12一覧表示
 function createTable(){
 
+    let attack =
+    document.getElementById("attackType").value;
 
-    let my =
-    Number(myPower.value);
+    let html = "<table>";
 
+    // 横軸
+    html += "<tr>";
 
-    let html = "";
-
+    html += "<th>自\\敵</th>";
 
     for(let enemy = 1; enemy <= 12; enemy++){
 
-
-        let d =
-        calcDamage(my, enemy);
-
-
-
-        html +=
-
-        "<div class='card'>"
-
-        +"敵武力 "+enemy+"<br>"
-
-        +"乱戦 "+d.clash.toFixed(1)+"<br>"
-
-        +"槍撃 "+d.spear.toFixed(1)+"<br>"
-
-        +"突撃 "+d.charge.toFixed(1)+"<br>"
-
-        +"弓 "+d.bow.toFixed(1)+"<br>"
-
-        +"斬撃 "+d.slash.toFixed(1)+"<br>"
-
-        +shotText(my,enemy)
-
-        +"</div>";
+        html += "<th>" + enemy + "</th>";
 
     }
 
+    html += "</tr>";
 
-    document.getElementById("table").innerHTML = html;
+    // 縦軸
+    for(let my = 1; my <= 12; my++){
+
+        html += "<tr>";
+
+        html += "<th>" + my + "</th>";
+
+        for(let enemy = 1; enemy <= 12; enemy++){
+
+            let d =
+            calcDamage(my, enemy);
+
+            let value = 0;
+
+            switch(attack){
+
+                case "clash":
+                    value = d.clash;
+                    break;
+
+                case "spear":
+                    value = d.spear;
+                    break;
+
+                case "charge":
+                    value = d.charge;
+                    break;
+
+                case "bow":
+                    value = d.bow;
+                    break;
+
+                case "slash":
+                    value = d.slash;
+                    break;
+
+                case "shot":
+
+                    value =
+                    calcShot(
+                        my,
+                        enemy,
+                        Number(shotCount.value),
+                        sniper.checked
+                    ).total;
+
+                    break;
+
+            }
+
+            html +=
+            "<td>" +
+            value.toFixed(1) +
+            "</td>";
+
+        }
+
+        html += "</tr>";
+
+    }
+
+    html += "</table>";
+
+    document.getElementById("damageTable").innerHTML = html;
 
 }
-
-
-
 // 任意敵武力表示
 function createDetail(){
 
-
     let my =
     Number(myPower.value);
-
 
     let enemy =
     Number(enemyPower.value);
 
-
-
     let d =
     calcDamage(my, enemy);
 
-
-
     document.getElementById("detail").innerHTML =
-
 
     "<div class='card'>"
 
-    +"自武力 "+my
-    +" / 敵武力 "+enemy
+    +"自武力 "
+    + my
+
+    +" / 敵武力 "
+    + enemy
+
     +"<br><br>"
 
-    +"乱戦 "+d.clash.toFixed(1)+"<br>"
+    +"乱戦 "
+    + d.clash.toFixed(1)
 
-    +"槍撃 "+d.spear.toFixed(1)+"<br>"
+    +"<br>"
 
-    +"突撃 "+d.charge.toFixed(1)+"<br>"
+    +"槍撃 "
+    + d.spear.toFixed(1)
 
-    +"弓 "+d.bow.toFixed(1)+"<br>"
+    +"<br>"
 
-    +"斬撃 "+d.slash.toFixed(1)
-    
+    +"突撃 "
+    + d.charge.toFixed(1)
+
+    +"<br>"
+
+    +"弓 "
+    + d.bow.toFixed(1)
+
+    +"<br>"
+
+    +"斬撃 "
+    + d.slash.toFixed(1)
+
     +"<br><br>"
 
-    +shotText(my,enemy)
+    + shotText(my, enemy)
 
     +"</div>";
 
@@ -319,7 +368,6 @@ function createDetail(){
 
 
 // 更新処理
-
 function update(){
 
     createTable();
@@ -331,7 +379,6 @@ function update(){
 
 
 // 変更時更新
-
 myPower.onchange = update;
 
 enemyPower.onchange = update;
@@ -340,8 +387,9 @@ shotCount.onchange = update;
 
 sniper.onchange = update;
 
+document.getElementById("attackType").onchange = update;
 
 
-// 初期表示
 
+// 初回表示
 update();
