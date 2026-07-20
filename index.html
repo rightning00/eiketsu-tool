@@ -1,154 +1,107 @@
-<!DOCTYPE html>
-<html lang="ja">
+function calc(){
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    let kouyou =
+    Number(document.getElementById("kouyou").value);
 
-<title>英傑大戦 士気計算</title>
+    let count =
+    Number(document.getElementById("count").value);
 
-<link rel="stylesheet" href="style.css">
-
-</head>
+    let current =
+    Number(document.getElementById("current").value);
 
 
-<body>
+    // 高揚
+    let bonus = kouyou * 0.2;
 
 
-<div class="menu">
+    // 即時士気
+    if(document.getElementById("shiki2").checked){
+        bonus += 1.5;
+    }
 
-<button onclick="location.href='index.html'">
-士気計算
-</button>
+    if(document.getElementById("kohou2").checked){
+        bonus += 1;
+    }
 
-<button onclick="location.href='damage.html'">
-ダメージ計算
-</button>
-
-<button onclick="location.href='siege.html'">
-攻城計算
-</button>
-
-</div>
-
-<hr>
+    if(document.getElementById("hougu").checked){
+        bonus += 0.75;
+    }
 
 
-<h1>英傑大戦<br>士気計算ツール</h1>
-
-<h2>デッキ情報</h2>
-
-
-<label>
-高揚コスト
-<input id="kouyou" type="number" value="0" step="0.5">
-</label>
+    // 士気流派3発動
+    let shiki3 =
+    Number(document.getElementById("shiki3").value);
 
 
-<label>
-現在カウント
-<input id="count" type="number" value="99">
-</label>
+    // 区間回復計算
+    function recovery(start,end){
+
+        let value = 0;
+
+        for(let c=start; c>end; c--){
+
+            if(shiki3 > 0 && c <= shiki3){
+
+                value += (1 / 4.2) * 1.3;
+
+            }else{
+
+                value += 1 / 4.2;
+
+            }
+        }
+
+        return value;
+    }
 
 
-<label>
-現在士気
-<input id="current" type="number" value="0" step="0.1">
-</label>
+    // 現在まで
+    let nowGain = recovery(99,count);
+
+    let nowTotal =
+    current + bonus + nowGain;
 
 
+    // 残り10まで（有効士気）
+    let effectiveGain =
+    recovery(99,10);
 
-<h2>追加士気</h2>
-
-
-<label>
-<input id="shiki2" type="checkbox">
-表・士気流派2（+1.5）
-</label>
+    let effectiveTotal =
+    bonus + effectiveGain;
 
 
-<label>
-<input id="kohou2" type="checkbox">
-表・琥煌流派2（+1）
-</label>
+    // 10～0の死に士気
+    let deadGain =
+    recovery(10,0);
 
 
-<label>
-<input id="hougu" type="checkbox">
-宝具副効果（+0.75）
-</label>
-
-
-
-<h2>表・士気流派3</h2>
-
-<select id="shiki3">
-
-<option value="0">
-使用しない
-</option>
-
-<option value="90">
-残り90カウントで発動
-</option>
-
-<option value="80">
-残り80カウントで発動
-</option>
-
-<option value="70">
-残り70カウントで発動
-</option>
-
-<option value="60">
-残り60カウントで発動
-</option>
-
-<option value="50">
-残り50カウントで発動
-</option>
-
-<option value="40">
-残り40カウントで発動
-</option>
-
-<option value="30">
-残り30カウントで発動
-</option>
-
-<option value="20">
-残り20カウントで発動
-</option>
-
-<option value="10">
-残り10カウントで発動
-</option>
-
-</select>
+    // 0まで全部
+    let allTotal =
+    bonus + recovery(99,0);
 
 
 
-<br><br>
+    document.getElementById("result").innerHTML =
 
+    "<div class='total'>" +
+    "0カウントまでの総士気<br>" +
+    allTotal.toFixed(2) +
+    "</div>" +
 
-<button onclick="calc()">
-計算
-</button>
+    "<div class='now'>" +
+    "現在使用可能士気<br>" +
+    nowTotal.toFixed(2) +
+    "</div>" +
 
+    "<div class='effective'>" +
+    "残り10カウント時点<br>" +
+    "有効使用可能士気<br>" +
+    effectiveTotal.toFixed(2) +
+    "</div>" +
 
+    "<div class='dead'>" +
+    "死に士気（残り10～0）<br>" +
+    deadGain.toFixed(2) +
+    "</div>";
 
-<h2>結果</h2>
-
-
-<div id="result">
-ここに表示
-</div>
-
-
-
-<script src="script.js"></script>
-
-
-</body>
-
-</html>
+}
