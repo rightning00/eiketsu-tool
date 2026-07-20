@@ -83,6 +83,11 @@ function calc(){
 
     document.getElementById("result").innerHTML =
 
+    "<div class='total'>" +
+    "0カウントまでの総士気<br>" +
+    allTotal.toFixed(2) +
+    "</div>" +
+
     "<div class='now'>" +
     "現在使用可能士気<br>" +
     nowTotal.toFixed(2) +
@@ -92,11 +97,6 @@ function calc(){
     "残り10カウント時点<br>" +
     "有効使用可能士気<br>" +
     effectiveTotal.toFixed(2) +
-    "</div>" +
-
-    "<div class='total'>" +
-    "0カウントまでの総士気<br>" +
-    allTotal.toFixed(2) +
     "</div>" +
 
     "<div class='dead'>" +
