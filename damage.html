@@ -25,88 +25,79 @@
 ダメージ計算
 </button>
 
+<button onclick="location.href='siege.html'">
+攻城計算
+</button>
+
 </div>
 
 <hr>
 
-<h1>
-英傑大戦<br>
-ダメージシミュレーター
-</h1>
-
+<h1>英傑大戦<br>ダメージシミュレーター</h1>
 
 <h2>設定</h2>
 
-<label>
+<div class="top-setting">
 
-自武力
+    <label>
 
-<select id="myPower"></select>
+        自武力
 
-</label>
+        <select id="myPower"></select>
 
+    </label>
 
-<label>
+    <label>
 
-攻撃種類
+        敵武力
 
-<select id="attackType">
+        <select id="enemyPower"></select>
 
-    <option value="clash">乱戦</option>
+    </label>
 
-    <option value="spear">槍撃</option>
+    <label>
 
-    <option value="charge">騎馬</option>
+        射撃発数
 
-    <option value="bow">弓</option>
+        <select id="shotCount"></select>
 
-    <option value="slash">剣豪</option>
+    </label>
 
-    <option value="shot">銃</option>
+    <label class="sniper-box">
 
-</select>
+        <input type="checkbox" id="sniper">
 
-</label>
+        狙撃
 
+    </label>
 
-<h2>射撃設定</h2>
+</div>
 
-<label>
-
-射撃発数
-
-<select id="shotCount"></select>
-
-</label>
-
-
-<label>
-
-<input type="checkbox" id="sniper">
-
-狙撃
-
-</label>
-
-
-<h2>ダメージ表</h2>
-
-<div id="damageTable"></div>
-
-<hr>
-
-<h2>任意武力</h2>
-
-<label>
-
-敵武力
-
-<select id="enemyPower"></select>
-
-</label>
 
 <div id="detail"></div>
 
+<hr>
+
+<h2>簡易表</h2>
+
+<label>
+
+    攻撃種類
+
+    <select id="attackType">
+
+        <option value="clash">乱戦</option>
+        <option value="spear">槍撃</option>
+        <option value="charge">突撃</option>
+        <option value="bow">弓</option>
+        <option value="slash">斬撃</option>
+        <option value="shot">銃（回数、狙撃は上で設定）</option>
+
+    </select>
+
+</label>
+
+<div id="damageTable"></div>
 
 <script src="damage.js"></script>
 
