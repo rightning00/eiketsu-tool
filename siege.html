@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>英傑大戦 攻城シミュレーター</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="menu">
+
+        <button onclick="location.href='index.html'">
+            士気計算
+        </button>
+
+        <button onclick="location.href='damage.html'">
+            ダメージ計算
+        </button>
+
+        <button onclick="location.href='siege.html'">
+            攻城計算
+        </button>
+
+    </div>
+
+    <hr>
+
+    <h1>
+
+        英傑大戦<br>
+        攻城シミュレーター
+
+    </h1>
+
+    <h2>設定</h2>
+
+
+<div class="character-area">
+
+
+    <div class="card">
+
+    <h3>武将A</h3>
+
+    <div class="setting-row">
+
+        <label>
+
+            兵種
+
+            <select id="typeA">
+
+                <option value="spear">槍兵</option>
+<option value="horse">騎兵</option>
+<option value="bow">弓兵</option>
+<option value="gun">鉄砲隊</option>
+<option value="sword">剣豪</option>
+<option value="scout">忍</option>
+<option value="elephant">象兵</option>
+
+            </select>
+
+        </label>
+
+        <label>
+
+            武力
+
+            <select id="powerA"></select>
+
+        </label>
+
+        <label>
+
+            知力
+
+            <select id="intelA"></select>
+
+        </label>
+
+        <label>
+
+            コスト
+
+            <select id="costA">
+
+                <option value="1">1</option>
+<option value="1.5">1.5</option>
+<option value="2">2</option>
+<option value="2.5">2.5</option>
+<option value="3">3</option>
+<option value="3.5">3.5</option>
+<option value="4">4</option>
+
+            </select>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <label>
+
+            流派
+
+            <select id="styleA">
+
+                <option value="none">なし</option>
+<option value="kohou">琥煌流派</option>
+<option value="unit">部隊流派(裏1)</option>
+
+            </select>
+
+        </label>
+
+        <label>
+
+            戦器
+
+            <select id="weaponA">
+
+                <option value="none">なし</option>
+<option value="shield">盾戦器</option>
+<option value="onimaru">鬼丸国綱</option>
+
+            </select>
+
+        </label>
+
+        <label>
+
+            英魂
+
+            <select id="soulA">
+
+                <option value="0">なし</option>
+<option value="1">+1</option>
+<option value="2">+2</option>
+<option value="3">+3</option>
+
+            </select>
+
+        </label>
+
+    </div>
+
+</div>
+
+<div class="card">
+
+<h3>武将B</h3>
+
+    <div class="setting-row">
+
+        <label>
+
+            兵種
+
+            <select id="typeB">
+
+                <option value="spear">槍兵</option>
+<option value="horse">騎兵</option>
+<option value="bow">弓兵</option>
+<option value="gun">鉄砲隊</option>
+<option value="sword">剣豪</option>
+<option value="scout">忍</option>
+<option value="elephant">象兵</option>
+
+            </select>
+
+        </label>
+
+        <label>
+
+            武力
+
+            <select id="powerB"></select>
+
+        </label>
+
+        <label>
+
+            知力
+
+            <select id="intelB"></select>
+
+        </label>
+
+        <label>
+
+            コスト
+
+            <select id="costB">
+
+                <option value="1">1</option>
+<option value="1.5">1.5</option>
+<option value="2">2</option>
+<option value="2.5">2.5</option>
+<option value="3">3</option>
+<option value="3.5">3.5</option>
+<option value="4">4</option>
+
+            </select>
+
+        </label>
+
+    </div>
+
+    <div class="setting-row">
+
+        <label>
+
+            流派
+
+            <select id="styleB">
+
+                <option value="none">なし</option>
+<option value="kohou">琥煌流派</option>
+<option value="unit">部隊流派(裏1)</option>
+
+            </select>
+
+        </label>
+
+        <label>
+
+            戦器
+
+            <select id="weaponB">
+
+                <option value="none">なし</option>
+<option value="shield">盾戦器</option>
+<option value="onimaru">鬼丸国綱</option>
+
+            </select>
+
+        </label>
+
+        <label>
+
+            英魂
+
+            <select id="soulB">
+
+                <option value="0">なし</option>
+<option value="1">+1</option>
+<option value="2">+2</option>
+<option value="3">+3</option>
+
+            </select>
+
+        </label>
+
+    </div>
+
+</div>
+
+</div>       
+
+
+<h2>結果</h2>
+
+    <div id="result">
+
+        ここに結果を表示
+
+    </div>
+
+   <h2>簡易表</h2>
+
+<div class="card" id="simpleTable"></div>
+
+    <script src="siege.js"></script>
+
+</body>
+
+</html>
