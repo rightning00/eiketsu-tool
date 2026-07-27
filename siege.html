@@ -1,376 +1,333 @@
-#result div {
+<!DOCTYPE html>
+<html lang="ja">
 
-    margin:15px;
-    padding:15px;
-    border-radius:10px;
-    font-size:22px;
-}
+<head>
 
+    <meta charset="UTF-8">
 
-.total {
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    background: #fff1b8;
-    color: #7a5a00;
+    <title>英傑大戦 攻城シミュレーター</title>
 
-}
+    <link rel="stylesheet" href="style.css">
 
-.now {
+</head>
 
-    background: #cfe8ff;
-    color: #1e4f8a;
+<body>
 
-}
+    <div class="menu">
 
-.effective {
+        <button onclick="location.href='index.html'">
+            士気計算
+        </button>
 
-    background: #d8f5d0;
-    color: #2f6b2f;
+        <button onclick="location.href='damage.html'">
+            ダメージ計算
+        </button>
 
-}
+        <button onclick="location.href='siege.html'">
+            攻城計算
+        </button>
 
-.dead {
+    </div>
 
-    background: #ffd6d6;
-    color: #8a2e2e;
+    <hr>
 
-}
+    <h1>
 
+        英傑大戦<br>
+        攻城シミュレーター
 
-.menu button{
+    </h1>
 
-    font-size:18px;
-    padding:10px 20px;
-    margin:5px;
+    <h2>設定</h2>
 
-}
 
+<div class="character-area">
 
-body {
 
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px;
+    <div class="card">
 
-    background: #f0f2f5;
-    color: #222;
+    <h3>武将A</h3>
 
-}
+    <div class="setting-row">
 
+        <label>
 
-h1{
+            兵種
 
-    text-align: center;
-    margin-bottom: 25px;
+            <select id="typeA">
 
-}
+                <option value="spear">槍兵</option>
+<option value="horse">騎兵</option>
+<option value="bow">弓兵</option>
+<option value="gun">鉄砲隊</option>
+<option value="sword">剣豪</option>
+<option value="scout">調査兵団</option>
+<option value="elephant">象兵</option>
 
+            </select>
 
-.menu{
+        </label>
 
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
+        <label>
 
-}
+            武力
 
+            <select id="powerA"></select>
 
-.menu button{
+        </label>
 
-    flex: 1;
-    max-width: 220px;
+        <label>
 
-}
+            知力
 
+            <select id="intelA"></select>
 
-button{
-    font-size:18px;
-    padding:12px;
-    background:#4a7cff;
-    color:white;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-}
+        </label>
 
+        <label>
 
-#result,
-.card{
+            コスト
 
-    background: white;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 12px;
+            <select id="costA">
 
-}
+                <option value="1">1</option>
+<option value="1.5">1.5</option>
+<option value="2">2</option>
+<option value="2.5">2.5</option>
+<option value="3">3</option>
+<option value="3.5">3.5</option>
+<option value="4">4</option>
 
+            </select>
 
-#result{
+        </label>
 
-    font-size: 20px;
-    font-weight: bold;
+    </div>
 
-}
+    <div class="setting-row">
 
+        <label>
 
-input,
-select {
+            流派
 
-    width: 100%;
-    padding: 10px;
+            <select id="styleA">
 
-    background: white;
-    color: black;
+                <option value="none">なし</option>
+<option value="kohou">琥煌流派</option>
+<option value="unit">部隊流派(裏1)</option>
 
-    border: 1px solid #ccc;
-    border-radius: 8px;
+            </select>
 
-}
+        </label>
 
+        <label>
 
-#damageTable{
-    overflow:auto;
-    transform:scale(0.68);
-    transform-origin:top left;
-    width:147%;
-    margin-bottom:-32%;
-}
+            戦器
 
-#damageTable table{
-    width:auto;
-    font-size:12px;
-}
+            <select id="weaponA">
 
-#damageTable th,
-#damageTable td{
-    min-width:28px;
-    padding:2px 4px;
-}
+                <option value="none">なし</option>
+<option value="shield">楯無</option>
+<option value="onimaru">鬼丸国綱</option>
 
-#simpleTable{
-    overflow-x:auto;
-}
+            </select>
 
-#simpleTable table{
-    width:auto;
-    margin:auto;
-    font-size:14px;
-}
+        </label>
 
-#simpleTable th,
-#simpleTable td{
-    min-width:40px;
-    padding:4px;
-}
+        <label>
 
-.simple-setting {
+            英魂
 
-    display: flex;
+            <select id="soulA">
 
-    align-items: center;
+                <option value="0">なし</option>
+<option value="1">+1</option>
+<option value="2">+2</option>
+<option value="3">+3</option>
 
-    justify-content: center;
+            </select>
 
-    gap: 15px;
+        </label>
 
-    margin-bottom: 15px;
+    </div>
 
-}
+</div>
 
-.simple-setting label {
+<div class="card">
 
-    display: flex;
+<h3>武将B</h3>
 
-    align-items: center;
+    <div class="setting-row">
 
-    gap: 5px;
+        <label>
 
-    margin: 0;
+            兵種
 
-}
+            <select id="typeB">
 
-.simple-setting select {
+                <option value="spear">槍兵</option>
+<option value="horse">騎兵</option>
+<option value="bow">弓兵</option>
+<option value="gun">鉄砲隊</option>
+<option value="sword">剣豪</option>
+<option value="scout">調査兵団</option>
+<option value="elephant">象兵</option>
 
-    width: 100px;
+            </select>
 
-}
+        </label>
 
-.top-select {
+        <label>
 
-    display: flex;
+            武力
 
-    gap: 15px;
+            <select id="powerB"></select>
 
-}
+        </label>
 
-.top-select > div {
+        <label>
 
-    flex: 1;
+            知力
 
-}
+            <select id="intelB"></select>
 
-.top-select label {
+        </label>
 
-    display: block;
+        <label>
 
-    margin-bottom: 5px;
+            コスト
 
-}
+            <select id="costB">
 
-.top-select select {
+                <option value="1">1</option>
+<option value="1.5">1.5</option>
+<option value="2">2</option>
+<option value="2.5">2.5</option>
+<option value="3">3</option>
+<option value="3.5">3.5</option>
+<option value="4">4</option>
 
-    width: 100%;
+            </select>
 
-}
-.top-setting {
+        </label>
 
-    display: flex;
+    </div>
 
-    align-items: center;
+    <div class="setting-row">
 
-    gap: 10px;
+        <label>
 
-    flex-wrap: nowrap;
+            流派
 
-}
+            <select id="styleB">
 
-.top-setting label {
+                <option value="none">なし</option>
+<option value="kohou">琥煌流派</option>
+<option value="unit">部隊流派(裏1)</option>
 
-    display: flex;
+            </select>
 
-    align-items: center;
+        </label>
 
-    gap: 5px;
+        <label>
 
-    margin: 0;
+            戦器
 
-}
+            <select id="weaponB">
 
-.top-setting select {
+                <option value="none">なし</option>
+<option value="shield">楯無</option>
+<option value="onimaru">鬼丸国綱</option>
 
-    width: 80px;
+            </select>
 
-}
+        </label>
 
-.sniper-box {
+        <label>
 
-    display: flex;
+            英魂
 
-    align-items: center;
+            <select id="soulB">
 
-    gap: 5px;
+                <option value="0">なし</option>
+<option value="1">+1</option>
+<option value="2">+2</option>
+<option value="3">+3</option>
 
-}
+            </select>
 
-.sniper-box input {
+        </label>
 
-    width: auto;
+    </div>
 
-    margin: 0;
+</div>
 
-}
+</div>       
 
-.setting-row {
 
-    display: flex;
-    gap: 12px;
-    margin-bottom: 12px;
+<h2>結果</h2>
 
-}
+    <div id="result">
 
-.setting-row label {
+        ここに結果を表示
 
-    flex: 1;
+    </div>
 
-    display: flex;
-    flex-direction: column;
 
-    margin: 0;
+<h2>攻城DPS表</h2>
 
-}
 
-.setting-row select {
+<div class="card">
 
-    width: 100%;
+<h3>表設定</h3>
 
-}
+<label>
 
-.damage-box {
+兵種
 
-    background: #ffe0e0;
-    font-weight: bold;
+<select id="tableType">
 
-}
+<option value="spear">槍兵</option>
+<option value="horse">騎兵</option>
+<option value="bow">弓兵</option>
+<option value="gun">鉄砲隊</option>
+<option value="sword">剣豪</option>
+<option value="scout">調査兵団</option>
+<option value="elephant">象兵</option>
 
-.speed-box {
+</select>
 
-    background: #dcecff;
-    font-weight: bold;
+</label>
 
-}
 
-.dps-box {
+<label>
 
-    background: #dff7df;
-    font-weight: bold;
+コスト
 
-}
+<select id="tableCost">
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-top:10px;
-}
+<option value="1">1</option>
+<option value="1.5">1.5</option>
+<option value="2">2</option>
+<option value="2.5">2.5</option>
+<option value="3">3</option>
+<option value="3.5">3.5</option>
+<option value="4">4</option>
 
-th{
-    background:#4a7cff;
-    color:#fff;
-}
+</select>
 
-td,
-th{
-    border:1px solid #ccc;
-    text-align:center;
-}
+</label>
 
-.character-area {
+</div>
 
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
 
-}
+<div class="card" id="dpsTable"></div>
 
-.character-area .card {
+    <script src="siege.js"></script>
 
-    flex: 1;
+</body>
 
-}
 
-@media (min-width: 901px){
-
-    #damageTable{
-        margin-bottom: 20px;
-    }
-
-}
-
-
-/* 攻城DPS表・ダメージ表を小型化 */
-
-
-/* DPS表だけさらに圧縮 */
-
-#dpsTable {
-    transform: scale(0.67);
-    transform-origin: top left;
-
-    width: 150%;
-    margin-bottom: -35%;
-}
-
-/* 表を縦1列おきに色分け */
-#damageTable td:nth-child(even),
-#dpsTable td:nth-child(even){
-    background:#eefbe8;
-}
+</html>
