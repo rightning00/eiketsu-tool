@@ -603,8 +603,8 @@ let killText =
 
 <tr>
 <td>残兵力</td>
-<td>${hpB.toFixed(1)}</td>
 <td>${hpA.toFixed(1)}</td>
+<td>${hpB.toFixed(1)}</td>
 </tr>
 
 </table>
