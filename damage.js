@@ -483,15 +483,14 @@ function updateMelee(){
     let hitB = Math.floor(count / intervalB);
 
 
-
     // 1回の乱戦ダメージ
     let damageA =
-    (5.2 + enemy * 0.8 - my * 0.8)
+    (5.2 + my * 0.8 - enemy * 0.8)
     * Number(cutB.value);
 
 
     let damageB =
-    (5.2 + my * 0.8 - enemy * 0.8)
+    (5.2 + enemy * 0.8 - my * 0.8)
     * Number(cutA.value);
 
 
@@ -603,8 +602,8 @@ let killText =
 
 <tr>
 <td>残兵力</td>
-<td>${hpA.toFixed(1)}</td>
 <td>${hpB.toFixed(1)}</td>
+<td>${hpA.toFixed(1)}</td>
 </tr>
 
 </table>
