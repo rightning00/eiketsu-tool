@@ -1,6 +1,8 @@
 // 要素取得
 
 let typeA = document.getElementById("typeA");
+console.log(typeA);
+console.log(document.getElementById("tableType"));
 let powerA = document.getElementById("powerA");
 let intelA = document.getElementById("intelA");
 let costA = document.getElementById("costA");
@@ -49,14 +51,14 @@ for (let i = 1; i <= 20; i++) {
 
 // 初期値
 
-powerA.value = 10;
-powerB.value = 10;
+powerA.value = 5;
+powerB.value = 5;
 
-intelA.value = 8;
-intelB.value = 8;
+intelA.value = 5;
+intelB.value = 5;
 
-costA.value = 2.5;
-costB.value = 2.5;
+costA.value = 1.5;
+costB.value = 1.5;
 
 typeA.value = "spear";
 typeB.value = "spear";
@@ -202,6 +204,7 @@ function calcSiege(type, power, intel, cost, style, weapon, soul) {
 
 function showResult() {
 
+
     let a = calcSiege(
 
         typeA.value,
@@ -228,10 +231,11 @@ function showResult() {
     );
 
 
-    // 簡易表計算
+    let dpsDiffA = a.dps - b.dps;
+    let dpsDiffB = b.dps - a.dps;
 
-    let diffWall = a.wall - b.wall;
-    let diffDps = a.dps - b.dps;
+
+    // 簡易表計算
 
 
     document.getElementById("result").innerHTML = `
@@ -243,6 +247,7 @@ function showResult() {
 <th>攻城ダメージ</th>
 <th>攻城速度</th>
 <th>DPS</th>
+<th>DPS差</th>
 </tr>
 
 
@@ -272,8 +277,14 @@ ${a.dps.toFixed(2)}
 
 </td>
 
-</tr>
 
+<td class="diff-box">
+
++${dpsDiffA.toFixed(2)}
+
+</td>
+
+</tr>
 
 
 <tr>
@@ -302,87 +313,10 @@ ${b.dps.toFixed(2)}
 
 </td>
 
-</tr>
 
+<td class="diff-box">
 
-</table>
-
-`;
-
-
-
-document.getElementById("simpleTable").innerHTML = `
-
-
-<table>
-
-<tr>
-
-<th>比較</th>
-<th>武将A</th>
-<th>武将B</th>
-
-</tr>
-
-
-<tr>
-
-<th>壁ダメ</th>
-
-<td>
-${a.wall.toFixed(2)}%
-</td>
-
-<td>
-${b.wall.toFixed(2)}%
-</td>
-
-</tr>
-
-
-
-<tr>
-
-<th>攻城速度</th>
-
-<td>
-${a.count.toFixed(2)}c
-</td>
-
-<td>
-${b.count.toFixed(2)}c
-</td>
-
-</tr>
-
-
-
-<tr>
-
-<th>DPS</th>
-
-<td>
-${a.dps.toFixed(2)}
-</td>
-
-<td>
-${b.dps.toFixed(2)}
-</td>
-
-</tr>
-
-
-
-<tr>
-
-<th>差</th>
-
-<td colspan="2">
-
-壁 ${diffWall.toFixed(2)}%
-<br>
-
-DPS ${diffDps.toFixed(2)}
+-
 
 </td>
 
@@ -391,8 +325,9 @@ DPS ${diffDps.toFixed(2)}
 
 </table>
 
-
 `;
+
+
 
 }
 
@@ -419,4 +354,86 @@ styleB.onchange = update;
 weaponB.onchange = update;
 soulB.onchange = update;
 
+
+
+function createDpsTable(){
+
+    let type =
+    document.getElementById("tableType").value;
+
+    let cost =
+    Number(document.getElementById("tableCost").value);
+
+
+    let html = "<table>";
+
+    html += "<tr>";
+    html += "<th>知力＼武力</th>";
+
+    for(let power = 1; power <= 12; power++){
+
+        html += "<th>"+power+"</th>";
+
+    }
+
+    html += "</tr>";
+
+
+    for(let intel = 1; intel <= 20; intel++){
+
+        html += "<tr>";
+
+        html += "<th>"+intel+"</th>";
+
+
+        for(let power = 1; power <= 12; power++){
+
+            let result =
+            calcSiege(
+                type,
+                power,
+                intel,
+                cost,
+                "none",
+                "none",
+                0
+            );
+
+
+            html +=
+            "<td>"
+            +
+            result.dps.toFixed(2)
+            +
+            "</td>";
+
+        }
+
+
+        html += "</tr>";
+
+    }
+
+
+    html += "</table>";
+
+
+    document.getElementById("dpsTable").innerHTML = html;
+
+}
+
+
+
+document.getElementById("tableType").onchange =
+createDpsTable;
+
+
+document.getElementById("tableCost").onchange =
+createDpsTable;
+
+
+// 初回表示
+
 update();
+
+createDpsTable();
