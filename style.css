@@ -347,12 +347,10 @@ th{
 
 }
 
-@media (max-width: 900px) {
+@media (min-width: 901px){
 
-    .character-area {
-
-        flex-direction: column;
-
+    #damageTable{
+        margin-bottom: 20px;
     }
 
 }
