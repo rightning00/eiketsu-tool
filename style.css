@@ -456,3 +456,44 @@ td {
     }
 
 }
+
+/* 攻城DPS表・ダメージ表を小型化 */
+
+#dpsTable table,
+#result table,
+#simpleTable table {
+    font-size: 0.65rem;
+}
+
+
+#dpsTable th,
+#dpsTable td,
+#result th,
+#result td,
+#simpleTable th,
+#simpleTable td {
+
+    padding: 3px 4px;
+
+}
+
+
+/* DPS表だけさらに圧縮 */
+
+#dpsTable {
+    transform: scale(0.67);
+    transform-origin: top left;
+
+    width: 150%;
+    margin-bottom: -35%;
+}
+
+
+/* 結果表 */
+
+#result table,
+#simpleTable table {
+
+    width: 67%;
+
+}
