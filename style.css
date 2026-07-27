@@ -371,7 +371,8 @@ th{
     margin-bottom: -35%;
 }
 
-/* DPS表を縦1列おきに色分け */
-#dpsTable td:nth-child(2n){
+/* 表を縦1列おきに色分け */
+#damageTable td:nth-child(even),
+#dpsTable td:nth-child(even){
     background:#eefbe8;
 }
