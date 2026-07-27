@@ -63,7 +63,7 @@
 <option value="bow">弓兵</option>
 <option value="gun">鉄砲隊</option>
 <option value="sword">剣豪</option>
-<option value="scout">忍</option>
+<option value="scout">調査兵団</option>
 <option value="elephant">象兵</option>
 
             </select>
@@ -129,7 +129,7 @@
             <select id="weaponA">
 
                 <option value="none">なし</option>
-<option value="shield">盾戦器</option>
+<option value="shield">楯無</option>
 <option value="onimaru">鬼丸国綱</option>
 
             </select>
@@ -172,7 +172,7 @@
 <option value="bow">弓兵</option>
 <option value="gun">鉄砲隊</option>
 <option value="sword">剣豪</option>
-<option value="scout">忍</option>
+<option value="scout">調査兵団</option>
 <option value="elephant">象兵</option>
 
             </select>
@@ -238,7 +238,7 @@
             <select id="weaponB">
 
                 <option value="none">なし</option>
-<option value="shield">盾戦器</option>
+<option value="shield">楯無</option>
 <option value="onimaru">鬼丸国綱</option>
 
             </select>
@@ -275,12 +275,59 @@
 
     </div>
 
-   <h2>簡易表</h2>
 
-<div class="card" id="simpleTable"></div>
+<h2>攻城DPS表</h2>
+
+
+<div class="card">
+
+<h3>表設定</h3>
+
+<label>
+
+兵種
+
+<select id="tableType">
+
+<option value="spear">槍兵</option>
+<option value="horse">騎兵</option>
+<option value="bow">弓兵</option>
+<option value="gun">鉄砲隊</option>
+<option value="sword">剣豪</option>
+<option value="scout">調査兵団</option>
+<option value="elephant">象兵</option>
+
+</select>
+
+</label>
+
+
+<label>
+
+コスト
+
+<select id="tableCost">
+
+<option value="1">1</option>
+<option value="1.5">1.5</option>
+<option value="2">2</option>
+<option value="2.5">2.5</option>
+<option value="3">3</option>
+<option value="3.5">3.5</option>
+<option value="4">4</option>
+
+</select>
+
+</label>
+
+</div>
+
+
+<div class="card" id="dpsTable"></div>
 
     <script src="siege.js"></script>
 
 </body>
+
 
 </html>
