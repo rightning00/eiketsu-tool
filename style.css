@@ -84,13 +84,13 @@ h1{
 
 
 button{
-
-    font-size: 18px;
-    padding: 12px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-
+    font-size:18px;
+    padding:12px;
+    background:#4a7cff;
+    color:white;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
 }
 
 
@@ -128,57 +128,41 @@ select {
 }
 
 
-button {
-
-    font-size: 18px;
-    padding: 12px;
-
-    background: #4a7cff;
-    color: white;
-
-    border: none;
-    border-radius: 12px;
-
+#damageTable{
+    overflow:auto;
+    transform:scale(0.68);
+    transform-origin:top left;
+    width:147%;
+    margin-bottom:-32%;
 }
 
-
-#damageTable {
-
-    overflow-x: auto;
-
+#damageTable table{
+    width:auto;
+    font-size:12px;
 }
 
-
-table {
-
-    width: 100%;
-
-    border-collapse: collapse;
-
-    margin-top: 10px;
-
+#damageTable th,
+#damageTable td{
+    min-width:28px;
+    padding:2px 4px;
 }
 
-
-th,
-td {
-
-    min-width: 40px;
-
-    padding: 8px;
-
-    border: 1px solid #666;
-
-    text-align: center;
-
+#simpleTable{
+    overflow-x:auto;
 }
 
-
-th {
-
-    background: #d8dce5;
-
+#simpleTable table{
+    width:auto;
+    margin:auto;
+    font-size:14px;
 }
+
+#simpleTable th,
+#simpleTable td{
+    min-width:40px;
+    padding:4px;
+}
+
 .simple-setting {
 
     display: flex;
@@ -211,23 +195,6 @@ th {
 
 }
 
-.sniper-box {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 5px;
-
-}
-
-.sniper-box input {
-
-    width: auto;
-
-    margin: 0;
-
-}
 .top-select {
 
     display: flex;
@@ -330,60 +297,6 @@ th {
 
 .damage-box {
 
-    background: #ffd6d6;
-
-}
-
-.speed-box {
-
-    background: #d8eaff;
-
-}
-
-.dps-box {
-
-    background: #d8f5d0;
-
-}
-
-table {
-
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-
-}
-
-th {
-
-    background: #4a7cff;
-    color: white;
-
-}
-
-td,
-th {
-
-    border: 1px solid #ccc;
-    padding: 12px;
-    text-align: center;
-
-}
-
-tr:nth-child(2) {
-
-    background: #d8f5d0;
-
-}
-
-tr:nth-child(3) {
-
-    background: #d8eaff;
-
-}
-
-.damage-box {
-
     background: #ffe0e0;
     font-weight: bold;
 
@@ -403,34 +316,21 @@ tr:nth-child(3) {
 
 }
 
-table {
-
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
 }
 
-th {
-
-    background: #4a7cff;
-    color: white;
-
+th{
+    background:#4a7cff;
+    color:#fff;
 }
 
 td,
-th {
-
-    border: 1px solid #ccc;
-    padding: 12px;
-    text-align: center;
-
-}
-
-td {
-
-    line-height: 1.7;
-
+th{
+    border:1px solid #ccc;
+    text-align:center;
 }
 
 .character-area {
@@ -457,25 +357,8 @@ td {
 
 }
 
+
 /* 攻城DPS表・ダメージ表を小型化 */
-
-#dpsTable table,
-#result table,
-#simpleTable table {
-    font-size: 0.65rem;
-}
-
-
-#dpsTable th,
-#dpsTable td,
-#result th,
-#result td,
-#simpleTable th,
-#simpleTable td {
-
-    padding: 3px 4px;
-
-}
 
 
 /* DPS表だけさらに圧縮 */
@@ -488,12 +371,7 @@ td {
     margin-bottom: -35%;
 }
 
-
-/* 結果表 */
-
-#result table,
-#simpleTable table {
-
-    width: 67%;
-
+/* DPS表を縦1列おきに色分け */
+#dpsTable td:nth-child(2n){
+    background:#eefbe8;
 }
